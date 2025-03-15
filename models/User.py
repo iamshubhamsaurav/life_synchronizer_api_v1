@@ -11,10 +11,10 @@ class UserModel(db.Model):
     password = db.Column(db.String, nullable=False)
     name = db.Column(db.String(80), nullable=False)
 
-    # def __repr__(self):
-    #     return f'''<User - 
-    #     id: {self.id}>, 
-    #     username: {self.username}, 
-    #     email: {self.email}, 
-    #     password: {self.password}'''
+    def __repr__(self):
+        return f'''<User - 
+        id: {self.id}>, 
+        username: {self.username}, 
+        email: {self.email}, 
+        password: {self.password}'''
     
