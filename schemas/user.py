@@ -9,5 +9,11 @@ class BaseUserSchema(Schema):
 class CreateUserSchema(BaseUserSchema):
     password = fields.Str(required=True)
 
-class ReadUserSchema(CreateUserSchema):
+class ReadUserSchema(BaseUserSchema):
     pass
+
+class UpdateUserSchema(Schema):
+    username = fields.Str(required=False)
+    email = fields.Email(required=False)
+    name = fields.Str(required=False)
+    password = fields.Str(required=False)
