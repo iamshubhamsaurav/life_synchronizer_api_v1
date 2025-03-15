@@ -7,6 +7,7 @@ class _BaseTaskSchema(Schema):
     description = fields.Str()
     status = fields.Str(required=True)
     deadline = fields.DateTime()
+    user_id = fields.Integer(required=True)
 
 class CreateTaskSchema(_BaseTaskSchema):
     pass

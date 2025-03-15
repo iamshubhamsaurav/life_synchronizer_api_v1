@@ -13,6 +13,10 @@ class TaskModel(db.Model):
     deadline = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at= db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    # Foreign Key
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), unique=False, nullable=False)
+    user = db.relationship("UserModel", back_populates="tasks")
+    # TODO: Check FK constraint check are working or not
     
     def __repr__(self):
         return f'''<Task - 

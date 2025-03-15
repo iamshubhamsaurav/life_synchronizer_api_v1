@@ -10,6 +10,9 @@ class UserModel(db.Model):
     email = db.Column(db.String(200), unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     name = db.Column(db.String(80), nullable=False)
+    tasks = db.relationship("TaskModel", back_populates="user", lazy="dynamic")
+
+
 
     def __repr__(self):
         return f'''<User - 
