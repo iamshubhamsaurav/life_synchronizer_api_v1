@@ -7,6 +7,7 @@ from db import db
 
 # Blueprint Imports
 from resources.users import blp as users_blueprint
+from resources.tasks import blp as tasks_blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -31,7 +32,8 @@ def create_app():
 
     # Registering the blueprints
     api.register_blueprint(users_blueprint)
-
+    api.register_blueprint(tasks_blueprint)
+    
     return app
 
 # if __name__ == '__main__':
