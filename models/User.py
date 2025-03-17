@@ -11,6 +11,7 @@ class UserModel(db.Model):
     name = db.Column(db.String(80), nullable=False)
     tasks = db.relationship("TaskModel", back_populates="user", lazy="dynamic")
     notes = db.relationship("NoteModel", back_populates="user", lazy="dynamic")
+    notes = db.relationship("BookModel", back_populates="user", lazy="dynamic")
 
     def __repr__(self):
         return f'''<User - 
