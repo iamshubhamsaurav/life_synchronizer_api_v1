@@ -12,6 +12,6 @@ class _BaseBookSchema(Schema):
 class CreateBookSchema(_BaseBookSchema):
     pass
 
-class ReadNoteSchema(_BaseBookSchema):
+class ReadBookSchema(_BaseBookSchema):
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
