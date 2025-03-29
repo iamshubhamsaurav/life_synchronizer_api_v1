@@ -10,7 +10,6 @@ class _BaseBookSchema(Schema):
 
 class CreateBookSchema(_BaseBookSchema):
     user_id = fields.Integer(required=True)
-    pass
 
 class ReadBookSchema(_BaseBookSchema):
     user_id = fields.Integer(dump_only=True)

@@ -7,7 +7,7 @@ class BookModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(256), nullable=False)
-    author = db.Column(db.String, nullable=False)
+    author = db.Column(db.String(128), nullable=False)
     status = db.Column(db.String(20), nullable=False)
     start_date = db.Column(db.DateTime)
     finish_date = db.Column(db.DateTime)
