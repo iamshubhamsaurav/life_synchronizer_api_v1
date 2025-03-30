@@ -13,6 +13,7 @@ class UserModel(db.Model):
     notes = db.relationship("NoteModel", back_populates="user", lazy="dynamic")
     books = db.relationship("BookModel", back_populates="user", lazy="dynamic")
     transactions = db.relationship("TransactionModel", back_populates="user", lazy="dynamic")
+    entertainment = db.relationship("EntertainmentModel", back_populates="user", lazy="dynamic")
 
     def __repr__(self):
         return f'''<User - 
