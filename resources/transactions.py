@@ -32,8 +32,10 @@ class CreateAndReadAllTransaction(MethodView):
             db.session.add(transaction)
             db.session.commit()
         except SQLAlchemyError as e:
+            print(e._message)
             abort(400, e._message)
         except Exception as e:
+            print('Error', e)
             abort(400, "Error occured in saving Transaction")
         return transaction
 
@@ -47,7 +49,7 @@ class Transaction(MethodView):
         return transaction
     
     @blp.arguments(UpdateTransactionSchema)
-    @blp.response(ReadTransactionSchema)
+    @blp.response(201, ReadTransactionSchema)
     def put(self, transaction_data, id):
         '''Update Transaction By Id'''
         transaction = TransactionModel.query.get_or_404(id)
