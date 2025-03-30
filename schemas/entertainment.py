@@ -8,13 +8,13 @@ class _BaseEntertainmentSchema(Schema):
     start_date = fields.DateTime()
     finish_date = fields.DateTime()
  
-class CreateBookSchema(_BaseEntertainmentSchema):
+class CreateEntertainmentSchema(_BaseEntertainmentSchema):
     user_id = fields.Integer(required=True)
 
-class ReadBookSchema(_BaseEntertainmentSchema):
+class ReadEntertainmentSchema(_BaseEntertainmentSchema):
     user_id = fields.Integer(dump_only=True)
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
 
-class UpdateBookSchema(_BaseEntertainmentSchema):
+class UpdateEntertainmentSchema(_BaseEntertainmentSchema):
     pass
