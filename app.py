@@ -10,6 +10,7 @@ from resources.users import blp as users_blueprint
 from resources.tasks import blp as tasks_blueprint
 from resources.notes import blp as notes_blueprint
 from resources.transactions import blp as transaction_blueprint
+from resources.entertainment import blp as entertainment_blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -37,6 +38,7 @@ def create_app():
     api.register_blueprint(tasks_blueprint)
     api.register_blueprint(notes_blueprint)
     api.register_blueprint(transaction_blueprint)
+    api.register_blueprint(entertainment_blueprint)
 
     return app
 

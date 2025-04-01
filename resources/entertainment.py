@@ -50,6 +50,23 @@ class Entertainment(MethodView):
     @blp.response(200, ReadEntertainmentSchema)
     def put(self, entertainment_data, id):
         'Update a entertainment by Id'
+        entertainment = EntertainmentModel.query.get_or_404(id)
+        entertainment.title = entertainment_data['title']
+        entertainment.author = entertainment_data['type']
+        entertainment.status = entertainment_data['status']
+        if 'start_date' in entertainment_data:
+            entertainment.start_date = entertainment_data['start_date']
+        if 'finish_date' in entertainment_data:
+            entertainment.finish_date = entertainment_data['finish_date']
+
+        try:
+            db.session.add(entertainment)
+            db.session.commit()
+            return entertainment
+        except SQLAlchemyError as e:
+            abort(400, e._message)
+        except Exception as e:
+            abort(400, "Error occured in updating entertainment")
 
     def delete(self, id):
         '''Delete a entertainment by Id'''
