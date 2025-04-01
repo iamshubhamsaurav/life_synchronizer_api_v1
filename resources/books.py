@@ -54,7 +54,7 @@ class Book(MethodView):
         book.status = book_data['status']
         if 'start_date' in book_data:
             book.start_date = book_data['start_date']
-        if 'finish_date' in book_data['finish_date']:
+        if 'finish_date' in book_data:
             book.finish_date = book_data['finish_date']
 
         try:
