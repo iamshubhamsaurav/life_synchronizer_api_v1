@@ -17,13 +17,13 @@ blp = Blueprint("books", "books", url_prefix="/api/v1/books")
 @blp.route('/')
 class BookList(MethodView):
     @blp.response(200, ReadBookSchema(many=True))
-    def get():
+    def get(self):
         '''Read all books'''
         return BookModel.query.all()
     
     @blp.arguments(CreateBookSchema)
     @blp.response(201, ReadBookSchema)
-    def post(book_data):
+    def post(self, book_data):
         '''Create Book'''
         book = BookModel(**book_data)
         try:
@@ -39,14 +39,14 @@ class BookList(MethodView):
 class Book(MethodView):
     
     @blp.response(200, ReadBookSchema)
-    def get(id):
+    def get(self, id):
         '''Get a book by id'''
         book = BookModel.query.get_or_404(id)
         return book
     
     @blp.arguments(UpdateBookSchema)
     @blp.response(200, ReadBookSchema)
-    def put(id, book_data):
+    def put(self, book_data, id):
         '''Update a book'''
         book = BookModel.query.get_or_404(id)
         book.title = book_data['title']
