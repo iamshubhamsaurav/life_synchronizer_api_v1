@@ -1,6 +1,8 @@
 # External Imports
 from flask import Flask
 from flask_smorest import Api
+from flask_cors import CORS
+
 
 # Internal Imports
 from db import db
@@ -15,6 +17,8 @@ from resources.entertainment import blp as entertainment_blueprint
 
 def create_app():
     app = Flask(__name__)
+    CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
+ # This enables CORS for all routes
 
     # Configuring the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
