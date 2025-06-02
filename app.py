@@ -14,6 +14,7 @@ from resources.notes import blp as notes_blueprint
 from resources.books import blp as books_blueprint
 from resources.transactions import blp as transaction_blueprint
 from resources.entertainment import blp as entertainment_blueprint
+from resources.stats import blp as stats_blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -45,7 +46,8 @@ def create_app():
     api.register_blueprint(books_blueprint)
     api.register_blueprint(transaction_blueprint)
     api.register_blueprint(entertainment_blueprint)
-
+    api.register_blueprint(stats_blueprint)
+    
     return app
 
 # if __name__ == '__main__':
