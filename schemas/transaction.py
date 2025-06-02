@@ -6,7 +6,7 @@ class _BaseTransactionSchema(Schema):
     type = fields.Str(required=True)
     amount = fields.Float(required=True)
     description = fields.Str(required=False)
-    date = fields.DateTime()
+    date = fields.DateTime(required=False)
 
 class CreateTransactionSchema(_BaseTransactionSchema):
     user_id = fields.Integer(required=True)
