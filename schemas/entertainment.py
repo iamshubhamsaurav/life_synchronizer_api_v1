@@ -17,4 +17,4 @@ class ReadEntertainmentSchema(_BaseEntertainmentSchema):
     updated_at = fields.DateTime(dump_only=True)
 
 class UpdateEntertainmentSchema(_BaseEntertainmentSchema):
-    pass
+    user_id = fields.Integer(required=False)

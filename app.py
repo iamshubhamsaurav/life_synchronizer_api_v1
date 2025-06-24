@@ -20,8 +20,7 @@ from resources.auth import blp as auth_blueprint
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
- # This enables CORS for all routes
+    CORS(app, supports_credentials=True)
 
     # Configuring the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"

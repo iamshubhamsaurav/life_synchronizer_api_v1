@@ -13,7 +13,7 @@ class CreateTaskSchema(_BaseTaskSchema):
     pass
 
 class UpdateTaskSchema(_BaseTaskSchema):
-    pass
+    user_id = fields.Integer(required=False)
 
 class ReadTaskSchema(_BaseTaskSchema):
     created_at = fields.DateTime(dump_only=True)
