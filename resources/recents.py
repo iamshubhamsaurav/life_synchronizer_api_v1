@@ -24,7 +24,6 @@ from schemas.transaction import ReadTransactionSchema
 
 blp = Blueprint("recents", "recents", url_prefix="/api/v1/recents")
 
-
 @blp.route('/books/')
 class BookList(MethodView):
     @blp.response(200, ReadBookSchema(many=True))
