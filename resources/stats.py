@@ -16,7 +16,6 @@ from models import (
     UserModel
 )
 
-
 blp = Blueprint("stats", "stats", url_prefix="/api/v1/stats")
 
 @blp.get('/overview')
@@ -35,4 +34,39 @@ def get_overview():
     result['transactions']  = transactions
     result['tasks']  = tasks
 
+    return result
+
+@blp.get('/transactions/')
+def get_transaction_stats():
+    result = {}
+    income_amount = 0
+    expense_amount = 0
+    recent_records = TransactionModel.query.order_by(TransactionModel.created_at.desc()).limit(5).all()
+    
+    for record in recent_records:
+        if record.type == 'expense':
+            expense_amount += record.amount
+        elif record.type == 'income':
+            income_amount += record.amount
+        
+        result['income'] = income_amount
+        result['expense'] = expense_amount
+        result['net'] = income_amount - expense_amount
+    return result
+
+@blp.get('/transactions/count/')
+def get_transaction_count():
+    result = {}
+    income_count = 0
+    expense_count = 0
+    recent_records = TransactionModel.query.order_by(TransactionModel.created_at.desc()).limit(5).all()
+    
+    for record in recent_records:
+        if record.type == 'expense':
+            expense_count += 1
+        elif record.type == 'income':
+            income_count += 1
+        
+        result['income'] = income_count
+        result['expense'] = expense_count
     return result

@@ -48,3 +48,23 @@ def get_recent_notes():
 def get_recent_notes():
     recent_records = TaskModel.query.order_by(TaskModel.created_at.desc()).limit(5).all()
     return recent_records
+
+@blp.get("/transactions/income/")
+@blp.response(200, ReadTransactionSchema(many=True))
+def get_recent_income_transaction():
+    result = []
+    recent_records = TransactionModel.query.order_by(TransactionModel.created_at.desc()).limit(5).all()
+    for record in recent_records:
+        if record.type == 'income':
+            result.append(record)
+    return result
+
+@blp.get("/transactions/expense/")
+@blp.response(200, ReadTransactionSchema(many=True))
+def get_recent_expense_transaction():
+    result = []
+    recent_records = TransactionModel.query.order_by(TransactionModel.created_at.desc()).limit(5).all()
+    for record in recent_records:
+        if record.type == 'expense':
+            result.append(record)
+    return result
