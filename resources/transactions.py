@@ -84,3 +84,35 @@ class Transaction(MethodView):
         except Exception as e:
             abort(400, "Error occured in deleting Transaction")
         return {"message": "Transaction Deleted"}
+    
+
+@blp.route('/income/')
+class ReadAllIncomeTransaction(MethodView):
+    
+    @blp.response(200, ReadTransactionSchema(many=True))
+    def get(self):
+        '''Read all income transactions'''
+        income_transactions = []
+        transactions = TransactionModel.query.all()
+        
+        for t in transactions:
+            if t.type == 'income':
+                income_transactions.append(t)
+
+        return income_transactions
+    
+
+@blp.route('/expense/')
+class ReadAllExpenseTransaction(MethodView):
+    
+    @blp.response(200, ReadTransactionSchema(many=True))
+    def get(self):
+        '''Read all expense transactions'''
+        expense_transactions = []
+        transactions = TransactionModel.query.all()
+        
+        for t in transactions:
+            if t.type == 'expense':
+                expense_transactions.append(t)
+
+        return expense_transactions
